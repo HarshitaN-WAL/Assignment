@@ -6,14 +6,19 @@ class TicTac
 		self.matrix=[[nil,nil,nil],[nil,nil,nil],[nil,nil,nil]]
 		self.rows=0
 	 end
-
+ 	def print_matrix
+ 		for i in (0..2)
+ 			s=[matrix[i][0]||" ",matrix[i][1]||" ",matrix[i][2]||" "].join(" ")
+ 			puts s
+ 		end
+ 	end
 	def fill_x(x:,y:)
 		#puts "filling"
 		matrix[x][y]="x"
 
 		update=filled[x][y]="fill"
 		puts "-"
-		puts matrix
+		
 	end
 	def fill_o(x:,y:)
 		#puts "filling"
@@ -21,7 +26,7 @@ class TicTac
 
 		update=filled[x][y]="fill"
 		puts "-"
-		puts matrix
+		
 	end
 	def check_free(x:,y:)
 	 	if filled[x][y]=="fill"
@@ -134,6 +139,7 @@ while t.rows<9 do
 				t.rows=t.rows+1
 				puts "computer"
 				t.fill_o(x:x,y:y)
+				t.print_matrix
 				puts t.rows				
 				break
 			end
@@ -161,6 +167,7 @@ while t.rows<9 do
 				t.rows=t.rows+1
 				puts "player"
 				t.fill_x(x:x,y:y)
+				t.print_matrix
 				puts t.rows
 				break
 			end
